@@ -1,0 +1,26 @@
+_repo: The-History-of-Tom-Thumb--13-To-Which-Are-Added-the-Stories-of-the-Cat-and-the-Mouse-and-Fire-__1988
+_version: 0.0.1
+creator:
+  editor:
+    agent_name: Altemus, Henry
+    gutenberg_agent_id: '774'
+    url: http://www.gutenberg.org/2009/agents/774
+description: ''
+gutenberg_issued: '1999-12-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1988'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Fairy tales -- England'
+- !lcc 'PZ'
+- !lcsh 'Children''s stories'
+- GITenberg
+tableOfContents: The History of Tom Thumb -- The Stories of the Cat and the Mouse
+  -- Fire! Fire! Burn Stick!
+title: "The History of Tom Thumb\r\nTo Which Are Added the Stories of the Cat and\
+  \ the Mouse and Fire! Fire! Burn Stick!"
+url: http://www.gutenberg.org/ebooks/1988
