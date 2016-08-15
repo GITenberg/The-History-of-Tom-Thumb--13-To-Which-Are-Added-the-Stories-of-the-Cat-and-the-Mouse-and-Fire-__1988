@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: LpvpmQOoANwxroJn4VYv2qidqRl7HsqYhyzqOHn2NbQEUjp8OKajNPTxhVJvcFT/TKigBcO9zTqlRjslV25gNIqucvAjW6nFdsDZF2V+YYPLZhqk2EZ70/cxTSfYDcvUf/4lrNl/6LrX35lZ+/lfWxKaaRCBFmjHUUyT75PhDJDfibsYwmxylq80AxQ3T2XRzCLbDX8/0kH13HoVBdulK82jFW2hDYD7krmLBDNPUIUt/Ot1y1NZzok7C4mRhsyaOmfcDu1nVLAczOCRdlKbNPTb77J96VLJgh5sAwupbF6GGMaIWpkL1X7ive2i+TEZNe0os1hImPX4g6/ecrfT9LsUUlzOkJK8Sf55/wbG0rwJIJIRvKGlh3UgTs4ViyE5uLFsOsUAo0h6z3DnczOb8b0j8Fhji4KmXxNyB84Fpy5To8sFlMc7jmd22hAzqiq75uQYDWOLvmdZ9T5VKyzVpOTEsk4CJH49zRihMzIjSViGMuhiQDxb6FAllnC7EflQ+m1N93dzlwfU/SqBb6OnWJ/mohb+4UeWmD1XMub8kol2tvUkr4Mx1FaAnRuJW6bv8Q3dKu7v//8guIJJu0JvEV9wLojshZNG7cLlt0hUqJBVL8y/bMPBtZ/iMW5KLWREDBrfnlfwlsAkb3etYRnKg+mPLOjV2uCime356qqd+gw=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-History-of-Tom-Thumb--13-To-Which-Are-Added-the-Stories-of-the-Cat-and-the-Mouse-and-Fire-__1988
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
