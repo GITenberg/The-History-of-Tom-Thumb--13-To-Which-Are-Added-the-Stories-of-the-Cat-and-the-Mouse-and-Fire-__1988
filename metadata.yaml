@@ -1,11 +1,16 @@
 _repo: The-History-of-Tom-Thumb--13-To-Which-Are-Added-the-Stories-of-the-Cat-and-the-Mouse-and-Fire-__1988
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   editor:
     agent_name: Altemus, Henry
     gutenberg_agent_id: '774'
     url: http://www.gutenberg.org/2009/agents/774
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/1988#The-History-of-Tom-Thumb--13-To-Which-Are-Added-the-Stories-of-the-Cat-and-the-Mouse-and-Fire-_
 gutenberg_issued: '1999-12-01'
 gutenberg_type: Text
 identifiers:
